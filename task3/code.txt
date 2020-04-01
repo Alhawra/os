@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+int main(int argc, char* argv[])
+{
+     pid_t process;
+     process = fork();
+     if(process==0)
+     {
+         if(execve(argv[0], (char**)argv, NULL) == -1)
+         printf("The process could not be started\n");
+     }
+     else
+     printf("The process could be started\n");
+     return 0;
+}
